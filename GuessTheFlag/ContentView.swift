@@ -18,7 +18,7 @@ struct ContentView: View {
     @State private var score = 0
     @State private var questionsCounter = 0
     
-    
+
     
     var body: some View {
         ZStack {
@@ -38,8 +38,7 @@ struct ContentView: View {
                 Spacer()
                 
                 Text("Guess the Flag")
-                    .foregroundStyle(.white)
-                    .font(.title.weight(.heavy))
+                    .titleStyle()
                 VStack (spacing: 30) {
                     VStack {
                         Text("Tap the flag of")
@@ -127,3 +126,18 @@ struct FlagImage: View {
             .shadow(radius: 5)
     }
 }
+
+struct Title: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundStyle(.white)
+    }
+}
+
+extension View {
+    func titleStyle() -> some View {
+        modifier(Title())
+    }
+}
+
